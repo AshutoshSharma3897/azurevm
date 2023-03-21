@@ -10,7 +10,7 @@ trigger:
 
 pool:
   vmImage: ubuntu-latest
-
+steps:
 - task: AzureKeyVault@2
   inputs:
     azureSubscription: 'Pay-As-You-Go (8fe6154c-f342-462d-8fea-11968363d989)'
