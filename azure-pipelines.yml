@@ -1,10 +1,4 @@
 # Starter pipeline
-- task: AzureKeyVault@2
-  inputs:
-    azureSubscription: 'Pay-As-You-Go (8fe6154c-f342-462d-8fea-11968363d989)'
-    KeyVaultName: 'devops1234'
-    SecretsFilter: 'devops1'
-    RunAsPreJob: false
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
@@ -12,8 +6,16 @@
 trigger:
 - main
 
+- task: AzureKeyVault@2
+  inputs:
+    azureSubscription: 'Pay-As-You-Go (8fe6154c-f342-462d-8fea-11968363d989)'
+    KeyVaultName: 'devops1234'
+    SecretsFilter: 'devops1'
+    RunAsPreJob: false
+
 pool:
   vmImage: ubuntu-latest
+
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'
